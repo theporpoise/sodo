@@ -2,6 +2,12 @@
  *TO USE MAIN, SIMPLY COMPILE IT.  THEN USE THE COMMAND IN THE COMMAND_ARGS.TXT FILE,
  CAT COMMAND_ARGS, COPY PASTE
  *
+ GIT BRANCH STUFF:
+ git branch -    //shoows branch
+ git branch -a  //shows all branches local and remote
+ git branch -r //shows only remote branches.
+ git checkout gould //to checkout the gould branch
+ 
  *
  *
 EVERYTHING BELOW HERE ARE PERSONAL CODING NOTES.
