@@ -6,7 +6,7 @@
 /*   By: mgould <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 11:41:42 by mgould            #+#    #+#             */
-/*   Updated: 2016/11/05 17:03:52 by mgould           ###   ########.fr       */
+/*   Updated: 2016/11/05 17:12:00 by mgould           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int main(int argc, char **argv)
 	argc = 0;
 	i = 0;
 	j = 0;
+	// make memory
 	row = (int*)malloc(sizeof(int) * 10);
 	matrix = (int**)malloc(sizeof(int*) * 9);
 	while(i < 9)
@@ -63,41 +64,22 @@ int main(int argc, char **argv)
 		i++;
 	}
 	i = 0;
+	//fill out matrix with start values
 	while (i < 9)
 	{
 		row = make_row(argv[i + 1]);
-		//printf("row[0] is:%d\n", row[0]);
-		//ft_putchar('0' + i);
 		while (j < 9)
 		{
-		matrix[i][j] = row[j];
-		//printf("row[j] is:%d\n", row[j])
-		ft_putchar('0' + matrix[i][j]);
-		//ft_putchar('0' + j);
-		ft_putchar(' ');
-		j++;
+			matrix[i][j] = row[j];
+			ft_putchar('0' + matrix[i][j]);
+			ft_putchar(' ');
+			j++;
 		}
 		i++;
 		j = 0;
 		ft_putchar('\b');
 		ft_putchar('\n');
 	}
-
-	ft_putchar('\n');
-	i = 0;
-	char *temp = "9...7....";
-	printf("before make row\n");
-	//printf("row entry 8 is:%d\n", row[8]);
-	row = make_row(temp); 
-	//printf("after make row\n");
-	//printf("row entry 8 is:%d\n", row[8]);
-	while(i < 9) 
-	{
-		ft_putchar(('0' + row[i]));
-		//printf("you got here\n");
-		i++;
-	}
-	
 	return (0);
 
 }
