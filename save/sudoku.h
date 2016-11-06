@@ -16,7 +16,7 @@ void	render(int ***cube);
 void	print_cube_bools(int ***cube);
 int		***make_cube(char **av);
 int		***initialize_cube(char **av);
-int		***row_check(int ***cube);
+int		***cube_row_check(int ***cube);
 int		***eliminate(int ***cube);
 
 #endif

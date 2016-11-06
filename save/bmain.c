@@ -14,7 +14,7 @@ int		main(int ac, char **av)
 	print_cube_bools(cube);
 	render(cube);
 
-	cube = row_check(cube);
+	cube = cube_row_check(cube);
 	print_cube_bools(cube);
 
 	cube = eliminate(cube);
