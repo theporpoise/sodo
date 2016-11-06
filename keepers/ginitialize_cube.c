@@ -28,7 +28,6 @@ void	print_cube_bools(int ***cube)
 
 int		***make_cube(char **av)
 {
-	printf("inside of make cube \n");
 	int		***cube;
 	int		i;
 	int		j;
@@ -67,8 +66,6 @@ int		***initialize_cube(char **av)
 
 	cube = make_cube(av);
 	i = 0;
-	j = 0;
-	k = 1;
 	while (i < 9)
 	{
 		j = 0;

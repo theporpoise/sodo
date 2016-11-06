@@ -12,15 +12,17 @@ int		main(int ac, char **av)
 	int		***cube;
 
 	cube = initialize_cube(av);
-	// initialize is totally fucked.
+	// initialize fixed!
 
-	print_cube_bools(cube);
-
-	// render(cube);
+	//print_cube_bools(cube);
+	//printing bools fixed!  this is a godo function for bug finding.
+	
+	render(cube);
 	// render cube working well.
 	ft_putchar('\n');
 	
 	/*
+	I don't htink tihs kind of testing will work b/c of how the bools are set up.
 	int		i;
 	i = 0;
 	while (i < 9)
@@ -28,19 +30,16 @@ int		main(int ac, char **av)
 		cube[0][i][0] = i;
 		i++;
 	}
-	*/
 	render(cube);
 	ft_putchar('\n');
-
-	/*
-	
 	i = 0;
 	while (i < 10)
 	{
 		ft_putchar(cube[0][0][i] + '0');
 		i++;
 	}
-
+	*/
+	/*
 	cube = row_check(cube);
 	i = 0;
 	while (i < 10)
@@ -49,11 +48,12 @@ int		main(int ac, char **av)
 		i++;
 	}
 	*/
-	//can't check this until initialize is correct!
-	/*
+	
+	//initialize fixed, checking eliminate
+
 	cube = eliminate(cube);
 	render(cube);
 	ft_putchar('\n');
-	*/
+
 	return (0);
 }
