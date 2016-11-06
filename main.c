@@ -6,7 +6,7 @@
 /*   By: mgould <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 11:41:42 by mgould            #+#    #+#             */
-/*   Updated: 2016/11/05 17:12:00 by mgould           ###   ########.fr       */
+/*   Updated: 2016/11/05 17:51:38 by mgould           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,29 @@ int	*make_row(char *arg)
 	return (row);
 }
 
+void	print_matrix(int **matrix)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+
+	while (i < 9)
+	{
+		while (j < 9)
+		{
+			ft_putchar('0' + matrix[i][j]);
+			ft_putchar(' ');
+			j++;
+		}
+		i++;
+		j = 0;
+		ft_putchar('\b');
+		ft_putchar('\n');
+	}
+}
+
 int main(int argc, char **argv)
 {
 	int **matrix;
@@ -55,6 +78,8 @@ int main(int argc, char **argv)
 	argc = 0;
 	i = 0;
 	j = 0;
+
+	//check for correct parameters, ints, spaces, no two ints together
 	// make memory
 	row = (int*)malloc(sizeof(int) * 10);
 	matrix = (int**)malloc(sizeof(int*) * 9);
@@ -80,6 +105,8 @@ int main(int argc, char **argv)
 		ft_putchar('\b');
 		ft_putchar('\n');
 	}
+	ft_putchar('\n');
+	// print matrix function
+	print_matrix(matrix);
 	return (0);
-
 }
