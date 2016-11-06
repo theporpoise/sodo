@@ -9,6 +9,9 @@
 # include "render.c"
 # include "get_free.c"
 
-
+void	ft_putchar(char c);
+void	render(int ***cube);
+int		***make_cube(char **av);
+int		***initialize_cube(char **av);
 
 #endif

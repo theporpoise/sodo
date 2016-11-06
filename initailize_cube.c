@@ -1,7 +1,5 @@
 #include "sudoku.h"
 
-int		*get_free(int *square);
-
 int		***make_cube(char **av)
 {
 	int		***cube;
@@ -33,7 +31,7 @@ int		***make_cube(char **av)
 	return (cube);
 }
 
-int		***initialize_cube(av)
+int		***initialize_cube(char **av)
 {
 	int		***cube;
 	int		i;
