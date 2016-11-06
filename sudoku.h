@@ -13,5 +13,6 @@ void	ft_putchar(char c);
 void	render(int ***cube);
 int		***make_cube(char **av);
 int		***initialize_cube(char **av);
+int		*get_free(int ***board, int row, int col);
 
 #endif
