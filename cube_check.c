@@ -1,124 +1,4 @@
 #include "sudoku.h"//<stdlib.h>
-/*
-int		***cube_row_check(int ***cube)
-{
-	int *row;
-	int i;
-	int j;
-	int k;
-
-	row = (int*)malloc(sizeof(*row) * 10);
-	i = 0;
-	while (i < 9)
-	{
-		j = 0;
-		while (j < 9)
-		{
-			row[cube[i][j][0]] += cube[i][j][0] > 0 ? 1 : 0;
-			// if cube[i][j][k] then Row[nbr] = 1;
-			j++;
-		}
-		j = 0;
-		while (j < 9)
-		{
-			k = 1;
-			while (k < 10)
-			{
-				cube[i][j][k] += row[k];
-				k++;
-			}
-			j++;
-		}
-		j = 0;
-		while (j < 9)
-		{
-			row[cube[i][j][0]] = 0;
-			j++;
-		}
-		i++;
-	}
-	free(row);
-	return (cube);
-}
-
-int		***cube_col_check(int ***cube)
-{
-	int *col;
-	int i;
-	int j;
-	int k;
-
-	col = (int*)malloc(sizeof(*col) * 10);
-	i = 0;
-	while (i < 9)
-	{
-		j = 0;
-		while (j < 9)
-		{
-			col[cube[j][i][0]] += cube[j][i][0] > 0 ? 1 : 0;
-			// if cube[i][j][k] then Row[nbr] = 1;
-			j++;
-		}
-		j = 0;
-		while (j < 9)
-		{
-			k = 1;
-			while (k < 10)
-			{
-				cube[j][i][k] += col[k];
-				k++;
-			}
-			j++;
-		}
-		j = 0;
-		while (j < 9)
-		{
-			col[cube[j][i][0]] = 0;
-			j++;
-		}
-		i++;
-	}
-	free(col);
-	return (cube);
-}
-
-int		***eliminate(int ***cube)
-{
-	int flag;
-	int i;
-	int j;
-	int k;
-
-	i = 0;
-	while (i < 9)
-	{
-		j = 0;
-		while (j < 9)
-		{
-			if (cube[i][j][0])
-			{
-				j++;
-				continue;
-			}
-			k = 1;
-			flag = 0;
-			while (k < 10)
-			{
-				if (!cube[i][j][k] && flag == 0)
-					flag = k;
-				else if (!cube[i][j][k])
-					flag = -1;
-				k++;
-			}
-			if (flag > 0)
-				cube[i][j][0] = flag;
-			j++;
-		}
-		i++;
-	}
-	return (cube);
-}
-*/
 
 int		***row_check(int ***cube, int row_index)
 {
@@ -224,6 +104,160 @@ int		***square_check(int ***cube, int row, int col)
 }
 
 
+int		***cube_row_check(int ***cube)
+{
+	int *row;
+	int i;
+	int j;
+	int k;
+
+	row = (int*)malloc(sizeof(*row) * 10);
+	i = 0;
+	while (i < 9)
+	{
+		j = 0;
+		while (j < 9)
+		{
+			row[cube[i][j][0]] += cube[i][j][0] > 0 ? 1 : 0;
+			// if cube[i][j][k] then Row[nbr] = 1;
+			j++;
+		}
+		j = 0;
+		while (j < 9)
+		{
+			k = 1;
+			while (k < 10)
+			{
+				cube[i][j][k] += row[k];
+				k++;
+			}
+			j++;
+		}
+		j = 0;
+		while (j < 9)
+		{
+			row[cube[i][j][0]] = 0;
+			j++;
+		}
+		i++;
+	}
+	free(row);
+	return (cube);
+}
+
+int		***cube_col_check(int ***cube)
+{
+	int *col;
+	int i;
+	int j;
+	int k;
+
+	col = (int*)malloc(sizeof(*col) * 10);
+	i = 0;
+	while (i < 9)
+	{
+		j = 0;
+		while (j < 9)
+		{
+			col[cube[j][i][0]] += cube[j][i][0] > 0 ? 1 : 0;
+			// if cube[i][j][k] then Row[nbr] = 1;
+			j++;
+		}
+		j = 0;
+		while (j < 9)
+		{
+			k = 1;
+			while (k < 10)
+			{
+				cube[j][i][k] += col[k];
+				k++;
+			}
+			j++;
+		}
+		j = 0;
+		while (j < 9)
+		{
+			col[cube[j][i][0]] = 0;
+			j++;
+		}
+		i++;
+	}
+	free(col);
+	return (cube);
+}
+
+int		***cube_square_check(int ***cube)
+{
+	int i;
+	int j;
+
+	i = 1;
+	j = 1;
+	while (i < 9)
+	{
+		while (j < 9)
+		{
+			cube = square_check(cube, i, j);
+			j += 3;
+		}
+		i += 3;
+	}
+	return (cube);
+}
+
+int		***cube_eliminate(int ***cube)
+{
+	int changed;
+	int flag;
+	int i;
+	int j;
+	int k;
+
+	changed = 0;
+	i = 0;
+	while (i < 9)
+	{
+		j = 0;
+		while (j < 9)
+		{
+			if (cube[i][j][0])
+			{
+				j++;
+				continue;
+			}
+			k = 1;
+			flag = 0;
+			while (k < 10)
+			{
+				if (!cube[i][j][k] && flag == 0)
+					flag = k;
+				else if (!cube[i][j][k])
+					flag = -1;
+				k++;
+			}
+			if (flag > 0)
+			{
+				cube[i][j][0] = flag;
+				changed = 1;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (!changed)
+	{
+		return (cube);
+	}
+	else
+	{
+		cube = cube_row_check(cube);
+		cube = cube_col_check(cube);
+		cube = cube_square_check(cube);
+		return (eliminate(cube));
+	}
+}
+
+/*
 int		row_eliminate(int ****cube, int ***eliminated, int row)
 {
 	int flag;
@@ -252,8 +286,6 @@ int		row_eliminate(int ****cube, int ***eliminated, int row)
 		if (flag > 0)
 		{
 			*cube[row][i][0] = flag;
-			eliminated[k][0] = row;
-			eliminated[k][1] = i;
 			k++;
 		}
 		i++;
@@ -261,23 +293,13 @@ int		row_eliminate(int ****cube, int ***eliminated, int row)
 	return (k);
 }
 
-int		col_eliminate(int ****cube, int ***eliminated, int col)
+int		col_eliminate(int ****cube, int col)
 {
-	int **eliminated;
 	int flag;
 	int i;
 	int j;
 	int k;
 
-	eliminated = (int**)malloc(sizeof(*eliminated) * 9);
-	i = 0;
-	while (i < 8)
-	{
-		eliminated[i] = (int*)malloc(sizeof(**eliminated) * 2);
-		eliminated[i][0] = 0;
-		eliminated[i][1] = 0;
-		i++;
-	}
 	i = 0;
 	while (i < 9)
 	{
@@ -299,63 +321,15 @@ int		col_eliminate(int ****cube, int ***eliminated, int col)
 		if (flag > 0)
 		{
 			*cube[i][col][0] = flag;
-			eliminated[k][0] = i;
-			eliminated[k][1] = col;
 			k++;
 		}
 		i++;
 	}
-	return (eliminated);
+	return (k);
 }
 
-
-
-
-int		***eliminate(int ***cube, int row, int col)
+int		square_eliminate(int ****cube, int row, int col)
 {
-	int **eliminated;
-	int flag;
-	int i;
-	int j;
-	int k;
-
-	eliminated = (int**)malloc(sizeof(*eliminated) * 27);
-	i = 0;
-	while (i < 8)
-	{
-		eliminated[i] = (int*)malloc(sizeof(**eliminated) * 2);
-		eliminated[i][0] = 0;
-		eliminated[i][1] = 0;
-		i++;
-	}
-
-	row_eliminate(&cube, &eliminated, col);
-	col_eliminate(&cube);
-
-	i = 0; // Col
-	while (i < 9)
-	{
-		if (cube[i][col][0])
-		{
-			i++;
-			continue;
-		}
-		j = 1;
-		flag = 0;
-		while (j < 10)
-		{
-			if (!cube[i][col][j] && flag == 0)
-				flag = j;
-			else if (!cube[i][col][j])
-				flag = -1;
-			j++;
-		}
-		if (flag > 0)
-			cube[i][col][0] = flag;
-		i++;
-	}
-
-
 	row = (row / 3 + 1) * 3;
 	col = (col / 3 + 1) * 3;
 	i = row - 3;
@@ -364,7 +338,7 @@ int		***eliminate(int ***cube, int row, int col)
 		j = col - 3;
 		while (j < col)
 		{
-			if (cube[i][j][0])
+			if (*cube[i][j][0])
 			{
 				j++;
 				continue;
@@ -373,25 +347,45 @@ int		***eliminate(int ***cube, int row, int col)
 			flag = 0;
 			while (k < 10)
 			{
-				if (!cube[i][j][k] && flag == 0)
+				if (!*cube[i][j][k] && flag == 0)
 					flag = k;
-				else if (!cube[i][j][k])
+				else if (!*cube[i][j][k])
 					flag = -1;
 				k++;
 			}
 			if (flag > 0)
-				cube[i][j][0] = flag;
+			{
+				*cube[i][j][0] = flag;
+				k++;
+			}
 			j++;
 		}
 		i++;
 	}
-
-
-
-
-	return (cube);
+	return (k);
 }
 
+
+
+int		***eliminate(int ***cube, int row, int col)
+{
+	int flag;
+
+	flag = row_eliminate(&cube, row) + \
+		   col_eliminate(&cube, col) + \
+		   square_eliminate(&cube, row, col);
+
+
+	if (!flag)
+	{
+		return (cube);
+	}
+	else
+	{
+
+	}
+}
+*/
 /*
 [nbr,1,2,3,4,5,6,7,8,9]
 [nbr,1,0,0,0,0,1,0,0,1]
