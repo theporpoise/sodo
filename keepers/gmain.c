@@ -12,8 +12,11 @@ int		main(int ac, char **av)
 	int		***cube;
 
 	cube = initialize_cube(av);
-	// may need to check initialize variables to check bools, but code looks ok.
-	render(cube);
+	// initialize is totally fucked.
+
+	print_cube_bools(cube);
+
+	// render(cube);
 	// render cube working well.
 	ft_putchar('\n');
 	
@@ -46,9 +49,11 @@ int		main(int ac, char **av)
 		i++;
 	}
 	*/
+	//can't check this until initialize is correct!
+	/*
 	cube = eliminate(cube);
 	render(cube);
 	ft_putchar('\n');
-	
+	*/
 	return (0);
 }

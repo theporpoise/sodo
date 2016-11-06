@@ -5,7 +5,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "initialize_cube.c"
+# include "ginitialize_cube.c"
 # include "ft_putchar.c"
 # include "render.c"
 # include "validate_input.c"
