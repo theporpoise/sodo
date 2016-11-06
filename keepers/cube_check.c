@@ -18,8 +18,8 @@ int ***row_check(int ***cube)
 		{
 			row[cube[i][j][0]] += cube[i][j][0] > 0 ? 1 : 0;
 			// if cube[i][j][k] then Row[nbr] = 1;
-			k = 0;
-			while (k < 9)
+			k = 1;
+			while (k < 10)
 			{
 				cube[i][j][k] += row[k];
 				k++;
@@ -47,8 +47,8 @@ int ***col_check(int ***cube)
 		while (j < 9)
 		{
 			col[cube[i][j][0]] += cube[i][j][0] > 0 ? 1 : 0;
-			k = 0;
-			while (k < 9)
+			k = 1;
+			while (k < 10)
 			{
 				cube[j][i][k] += col[k];
 				k++;
