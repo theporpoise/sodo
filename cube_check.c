@@ -253,7 +253,7 @@ int		***cube_eliminate(int ***cube)
 		cube = cube_row_check(cube);
 		cube = cube_col_check(cube);
 		cube = cube_square_check(cube);
-		return (eliminate(cube));
+		return (cube_eliminate(cube));
 	}
 }
 
@@ -390,11 +390,4 @@ int		***eliminate(int ***cube, int row, int col)
 [nbr,1,2,3,4,5,6,7,8,9]
 [nbr,1,0,0,0,0,1,0,0,1]
 */
-
-
-
-
-
-
-
 

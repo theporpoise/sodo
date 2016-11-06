@@ -19,7 +19,7 @@ int		main(int ac, char **av)
 	cube = square_check(cube, 0, 0);
 	print_cube_bools(cube);
 
-	cube = eliminate(cube);
+	cube = cube_eliminate(cube);
 	ft_putchar('\n');
 	render(cube);
 	

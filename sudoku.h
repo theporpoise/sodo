@@ -10,6 +10,7 @@
 # include "render.c"
 # include "validate_input.c"
 # include "cube_check.c"
+# include "picker.c"
 
 void	ft_putchar(char c);
 void	render(int ***cube);
