@@ -36,15 +36,18 @@ int		***initialize_cube(char **av)
 	int		***cube;
 	int		i;
 	int		j;
+	int		k;
 
 	cube = make_cube(av);
 	i = 0;
 	j = 0;
+	k = 1;
 	while (i < 9)
 	{
 		while (j < 9)
 		{
-			cube[i][j] = get_free(cube[i][j])
+			while (k < 10)
+				cube[i][j][k] = 1;
 		}
 	}
 	return (cube);
