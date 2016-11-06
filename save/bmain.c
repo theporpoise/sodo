@@ -14,10 +14,12 @@ int		main(int ac, char **av)
 	print_cube_bools(cube);
 	render(cube);
 
-	cube = cube_row_check(cube);
+	cube = row_check(cube, 0);
+	cube = col_check(cube, 0);
+	cube = square_check(cube, 0, 0);
 	print_cube_bools(cube);
 
-	cube = eliminate(cube);
+	cube = eliminate(cube, 0, 0);
 	ft_putchar('\n');
 	render(cube);
 	
