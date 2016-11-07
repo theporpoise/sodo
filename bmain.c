@@ -11,17 +11,21 @@ int		main(int ac, char **av)
 	int		***cube;
 
 	cube = initialize_cube(av);
+
 	print_cube_bools(cube);
 	render(cube);
+	ft_putchar('\n');
 
-	cube = row_check(cube, 0);
-	cube = col_check(cube, 0);
-	cube = square_check(cube, 0, 0);
-	print_cube_bools(cube);
+	cube = cube_row_check(cube);
+	cube = cube_col_check(cube);
+	cube = cube_square_check(cube);
 
 	cube = cube_eliminate(cube);
-	ft_putchar('\n');
+
+	print_cube_bools(cube);
 	render(cube);
+
+	//picker(cube);
 	
 	return (0);
 }
